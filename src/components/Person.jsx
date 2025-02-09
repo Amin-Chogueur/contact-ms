@@ -16,11 +16,14 @@ function Person() {
   async function getPerson(id) {
     try {
       setLoading(true);
-      const res = await axios.get(`http://localhost:4000/api/contact/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await axios.get(
+        `https://contact-ms-api-app.vercel.app/api/contact/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       const { person } = res.data;
       setPerson(person);
     } catch (error) {

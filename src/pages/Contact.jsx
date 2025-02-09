@@ -20,11 +20,14 @@ function Contact() {
   async function getPeople(token) {
     try {
       setLoading(true);
-      const res = await axios.get(`http://localhost:4000/api/contact`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await axios.get(
+        `https://contact-ms-api-app.vercel.app/api/contact`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       const data = res.data;
       const { people } = data;
       setPeople(people);

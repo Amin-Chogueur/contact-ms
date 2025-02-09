@@ -23,7 +23,7 @@ function NewContact() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `http://localhost:4000/api/contact/new`,
+        `https://contact-ms-api-app.vercel.app/api/contact/new`,
         formData,
         {
           headers: {

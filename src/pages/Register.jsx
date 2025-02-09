@@ -18,7 +18,7 @@ function Register() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `http://localhost:4000/api/users/register`,
+        `https://contact-ms-api-app.vercel.app/api/users/register`,
         formData
       );
       const data = res.data;
