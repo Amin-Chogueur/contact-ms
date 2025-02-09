@@ -6,7 +6,7 @@ import EditPersonForm from "./EditPersonForm";
 import useAuthContext from "../hooks/useAuthContext";
 import { toast } from "react-toastify";
 function Person() {
-  const { token } = useAuthContext();
+  const { token, API_URL } = useAuthContext();
   const navigate = useNavigate();
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
@@ -16,14 +16,11 @@ function Person() {
   async function getPerson(id) {
     try {
       setLoading(true);
-      const res = await axios.get(
-        `https://contact-ms-api.vercel.app/api/contact/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await axios.get(`${API_URL}/api/contact/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const { person } = res.data;
       setPerson(person);
     } catch (error) {
@@ -36,14 +33,11 @@ function Person() {
   async function deletePerson(id) {
     try {
       setLoading(true);
-      const res = await axios.delete(
-        `https://contact-ms-api.vercel.app/api/contact/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await axios.delete(`${API_URL}/api/contact/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const data = res.data;
       navigate("/contact");
       toast.success(data.message);

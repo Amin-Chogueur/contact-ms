@@ -5,7 +5,7 @@ import useAuthContext from "../hooks/useAuthContext";
 import { toast } from "react-toastify";
 
 function NewContact() {
-  const { token } = useAuthContext();
+  const { token, API_URL } = useAuthContext();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -22,15 +22,11 @@ function NewContact() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        `https://contact-ms-api.vercel.app/api/contact/new`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await axios.post(`${API_URL}/api/contact/new`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const data = res.data;
       toast.success(data.message);
       navigate("/contact");

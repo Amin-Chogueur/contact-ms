@@ -10,7 +10,7 @@ const intialState = {
 };
 function Login() {
   const navigate = useNavigate();
-  const { setUserName, setToken } = useAuthContext();
+  const { setUserName, setToken, API_URL } = useAuthContext();
   const [formData, setFormData] = useState(intialState);
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,10 +18,7 @@ function Login() {
   async function handleLogin(e) {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        `https://contact-ms-api.vercel.app/api/users/login`,
-        formData
-      );
+      const res = await axios.post(`${API_URL}/api/users/login`, formData);
       const { message, token, username } = res.data;
       localStorage.setItem("token", token);
       localStorage.setItem("username", username);

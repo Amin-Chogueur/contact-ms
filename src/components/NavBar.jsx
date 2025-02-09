@@ -14,10 +14,18 @@ export default function Navbar() {
     <nav className="bg-[#0a0f2c] text-white px-4 ">
       <div className="container mx-auto flex justify-between items-center h-[65px]">
         {/* Logo */}
-        <Link to="/" className="text-xl font-bold">
-          CONTACT MS
+        <Link to={"/"}>
+          <img
+            src="/images.jpeg"
+            alt="logo"
+            width={60}
+            className="rounded-3xl cursor-pointer"
+          />
         </Link>
 
+        <span className="text-sm  border p-1 rounded-4xl border-sky-100 md:hidden inline">
+          {userName}
+        </span>
         {/* Mobile Menu Button */}
         <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
@@ -30,11 +38,12 @@ export default function Navbar() {
           }`}
         >
           {userName && (
-            <li className="flex items-center gap-4 ">
-              <p className="text-sm flex-1 border p-1 rounded-4xl border-sky-100 ">
+            <li className="block md:flex items-center gap-4 ">
+              <span className="text-sm flex-1 border p-1 rounded-4xl border-sky-100 hidden md:inline">
                 {userName}
-              </p>
+              </span>
               <Link
+                onClick={() => setIsOpen(false)}
                 to="/contact"
                 className={`block  hover:text-gray-300 mb-4 md:mb-0 ${
                   pathname === "/contact" && "bg-[#272e53] p-2 rounded-md"
@@ -47,6 +56,7 @@ export default function Navbar() {
 
           <li>
             <Link
+              onClick={() => setIsOpen(false)}
               to="/about"
               className={`block  hover:text-gray-300 mb-4 md:mb-0 ${
                 pathname === "/about" && "bg-[#272e53] p-2 rounded-md"
@@ -59,6 +69,7 @@ export default function Navbar() {
           {!userName && (
             <li>
               <Link
+                onClick={() => setIsOpen(false)}
                 to="/login"
                 className={`block  hover:text-gray-300 mb-4 md:mb-0 ${
                   pathname === "/login" && "bg-[#272e53] p-2 rounded-md"
@@ -71,6 +82,7 @@ export default function Navbar() {
           {!userName && (
             <li>
               <Link
+                onClick={() => setIsOpen(false)}
                 to="/register"
                 className={`block  hover:text-gray-300 mb-4 md:mb-0 ${
                   pathname === "/register" && "bg-[#272e53] p-2 rounded-md"

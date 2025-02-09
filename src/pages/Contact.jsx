@@ -5,7 +5,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import useAuthContext from "../hooks/useAuthContext";
 
 function Contact() {
-  const { token } = useAuthContext();
+  const { token, API_URL } = useAuthContext();
   const [loading, setLoading] = useState(false);
   const [people, setPeople] = useState([]);
   const [error, setError] = useState("");
@@ -20,14 +20,11 @@ function Contact() {
   async function getPeople(token) {
     try {
       setLoading(true);
-      const res = await axios.get(
-        `https://contact-ms-api.vercel.app/api/contact`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await axios.get(`${API_URL}/api/contact`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const data = res.data;
       const { people } = data;
       setPeople(people);
@@ -61,7 +58,7 @@ function Contact() {
           name="filterdName"
           value={filterdName}
           onChange={(e) => setFilterdName(e.target.value)}
-          placeholder="Seaech By Full Name . . . "
+          placeholder="Search by name . . . "
           required
           className="w-full md:w-2xl mx-auto p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 my-5"
         />

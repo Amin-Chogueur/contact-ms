@@ -3,7 +3,7 @@ import axios from "axios";
 import useAuthContext from "../hooks/useAuthContext";
 import { toast } from "react-toastify";
 function EditPersonForm({ person, onUpdate }) {
-  const { token } = useAuthContext();
+  const { token, API_URL } = useAuthContext();
   const [formData, setFormData] = useState(person);
   const [loading, setLoading] = useState(false);
 
@@ -15,7 +15,7 @@ function EditPersonForm({ person, onUpdate }) {
     try {
       setLoading(true);
       const res = await axios.put(
-        `https://contact-ms-api.vercel.app/api/contact/${person._id}`,
+        `${API_URL}/api/contact/${person._id}`,
         formData,
         {
           headers: {

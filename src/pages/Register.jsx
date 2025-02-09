@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import useAuthContext from "../hooks/useAuthContext";
 const intialState = {
   username: "",
   email: "",
@@ -10,6 +11,7 @@ const intialState = {
 };
 function Register() {
   const navigate = useNavigate();
+  const { API_URL } = useAuthContext();
   const [formData, setFormData] = useState(intialState);
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,10 +19,7 @@ function Register() {
   async function handleRegister(e) {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        `https://contact-ms-api.vercel.app/api/users/register`,
-        formData
-      );
+      const res = await axios.post(`${API_URL}/api/users/register`, formData);
       const data = res.data;
       toast.success(data.message);
       navigate("/login");

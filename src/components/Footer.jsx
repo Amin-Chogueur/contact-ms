@@ -1,11 +1,18 @@
 import { FaFacebook, FaWhatsapp } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <footer className="bg-[#0a0f2c] text-white   ">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left p-4 h-[100px] md:h-[60px] gap-1">
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left p-4 h-[105px] md:h-[60px] gap-1">
         {/* Logo & Copyright */}
-        <h2 className="text-xl font-bold"> Contact MS</h2>
+        <Link to={"/"}>
+          <img
+            src="/images.jpeg"
+            alt="logo"
+            width={50}
+            className="rounded-3xl cursor-pointer"
+          />
+        </Link>
         <p className="text-sm text-gray-400">
           © {new Date().getFullYear()} All rights reserved.
         </p>

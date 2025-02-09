@@ -7,8 +7,11 @@ function AuthContextProvider({ children }) {
   const [userName, setUserName] = useState(
     () => localStorage.getItem("username") || ""
   );
+  const API_URL = "https://contact-ms-api.vercel.app";
   return (
-    <authContext.Provider value={{ token, setToken, userName, setUserName }}>
+    <authContext.Provider
+      value={{ token, setToken, userName, setUserName, API_URL }}
+    >
       {children}
     </authContext.Provider>
   );
