@@ -21,7 +21,7 @@ function Contact() {
     try {
       setLoading(true);
       const res = await axios.get(
-        `https://contact-ms-api-app.vercel.app/api/contact`,
+        `https://contact-ms-api.vercel.app/api/contact`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

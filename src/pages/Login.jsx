@@ -19,7 +19,7 @@ function Login() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `https://contact-ms-api-app.vercel.app/api/users/login`,
+        `https://contact-ms-api.vercel.app/api/users/login`,
         formData
       );
       const { message, token, username } = res.data;

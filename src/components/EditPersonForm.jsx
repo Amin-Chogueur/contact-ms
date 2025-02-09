@@ -15,7 +15,7 @@ function EditPersonForm({ person, onUpdate }) {
     try {
       setLoading(true);
       const res = await axios.put(
-        `https://contact-ms-api-app.vercel.app/api/contact/${person._id}`,
+        `https://contact-ms-api.vercel.app/api/contact/${person._id}`,
         formData,
         {
           headers: {

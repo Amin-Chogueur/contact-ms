@@ -17,7 +17,7 @@ function Person() {
     try {
       setLoading(true);
       const res = await axios.get(
-        `https://contact-ms-api-app.vercel.app/api/contact/${id}`,
+        `https://contact-ms-api.vercel.app/api/contact/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -37,7 +37,7 @@ function Person() {
     try {
       setLoading(true);
       const res = await axios.delete(
-        `http://localhost:4000/api/contact/${id}`,
+        `https://contact-ms-api.vercel.app/api/contact/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
