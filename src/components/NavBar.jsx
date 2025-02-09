@@ -23,9 +23,11 @@ export default function Navbar() {
           />
         </Link>
 
-        <span className="text-sm  border p-1 rounded-4xl border-sky-100 md:hidden inline">
-          {userName}
-        </span>
+        {userName && (
+          <span className="text-sm  border p-1 rounded-4xl border-sky-100 md:hidden inline">
+            {userName}
+          </span>
+        )}
         {/* Mobile Menu Button */}
         <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
@@ -92,7 +94,7 @@ export default function Navbar() {
               </Link>
             </li>
           )}
-          {userName && <LogoutButton />}
+          {userName && <LogoutButton setIsOpen={setIsOpen} />}
         </ul>
       </div>
     </nav>
